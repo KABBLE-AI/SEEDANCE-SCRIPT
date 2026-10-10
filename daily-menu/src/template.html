@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#284d3e">
+  <meta name="description" content="净香园周记把子肉的每日点菜小本：选菜、计价、保存与再次点单。">
+  <title>今天吃什么 · 周记每日点菜</title>
+  <style>/* APP_STYLES */</style>
+</head>
+<body>
+  <a class="skip-link" href="#menu-heading">跳到菜单</a>
+  <svg class="symbol-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 11h18c-.7 5.7-3.7 8-9 8s-8.3-2.3-9-8Z M8 21h8 M9 3c-2 2 2 2 0 5 M15 2c-2 2 2 3 0 5"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C10 2 3 7 5 14s15 5 15-10Z M4 21 16 9 M9 16l-1-5 M13 12l5 1"/></symbol>
+      <symbol id="i-wok" viewBox="0 0 24 24"><path d="M3 10h17c-1 6-4 9-9 9s-7-3-8-9Z M20 10l3-3 M7 3c-2 2 2 2 0 4 M13 2c-2 2 2 2 0 5 M8 21h6"/></symbol>
+      <symbol id="i-fish" viewBox="0 0 24 24"><path d="M2 12c5-8 12-8 16 0-4 8-11 8-16 0Z M18 12l5-5v10l-5-5 M8 7c2 3 2 7 0 10 M13 11h.01"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14 M5 12h14"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12 M6 18 18 6"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15 M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h5 M15 7h5 M4 17h9 M19 17h1"/><circle cx="12" cy="7" r="3"/><circle cx="16" cy="17" r="3"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V3H3v12h5"/></symbol>
+    </defs>
+  </svg>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="周记每日点菜首页"><span class="brand-mark"><svg class="icon"><use href="#i-bowl"/></svg></span><span><strong>周记<span class="brand-divider"> / </span>每日点菜</strong><small>一日三餐，好好吃饭</small></span></a>
+    <nav class="header-actions" aria-label="页面工具">
+      <button class="text-button" id="settings-button"><svg class="icon"><use href="#i-sliders"/></svg><span>菜单设置</span></button>
+      <button class="history-button" id="history-button"><svg class="icon"><use href="#i-clock"/></svg><span>点单记录</span><span class="history-count" id="history-count">0</span></button>
+    </nav>
+  </header>
+  <div id="storage-warning" class="storage-warning" role="alert" hidden></div>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><span class="eyebrow"><span class="live-dot"></span>净香园周记把子肉 · 千禧城</span><h1 id="hero-title">今天想吃<span>点什么？</span></h1><p>熟悉的家常味，照顾好每一天的胃。</p><div class="hero-foot"><span class="small-rule"></span>选好菜，把这一餐安排妥当。</div></div>
+      <div class="hero-art" aria-hidden="true">
+        <span class="art-word">好好<br>吃饭</span>
+        <svg viewBox="0 0 430 270" class="meal-art" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="204" cy="231" rx="130" ry="15" fill="#d7dece"/>
+          <path d="M93 137c2 65 39 99 104 99s101-34 103-99" fill="#f8f6e8" stroke="#315340" stroke-width="2.5"/>
+          <path d="M100 166c38 26 151 28 193 0 M114 193c47 19 121 20 165 0" fill="none" stroke="#b4c1a7" stroke-width="3"/>
+          <ellipse cx="197" cy="137" rx="103" ry="40" fill="#faf8ef" stroke="#315340" stroke-width="2.5"/>
+          <ellipse cx="197" cy="137" rx="89" ry="30" fill="#e3d5b0"/>
+          <path d="M132 122c-5-18 18-26 32-18 5-17 30-16 36-2 10-16 37-9 40 9 17-3 36 11 28 25l-47 20-67-3-31-15Z" fill="#fffdf3"/>
+          <g stroke="#d9cbb0" stroke-width="2" stroke-linecap="round"><path d="m155 119 4 3 m22-14 4 3 m27 9 5 1 m-48 14 4 3 m44 4 5-2 m-24-13 4 2 m-45 2 4 1 m79-7 4 1"/></g>
+          <path d="M166 135c4-10 30-10 37-4l8 17c-14 10-40 9-48-2Z" fill="#a6603c" stroke="#75462f" stroke-width="2"/>
+          <path d="M172 141c8-4 22-5 31-1 M171 148c9-4 23-4 33-1" fill="none" stroke="#e7b87f" stroke-width="5"/>
+          <path d="M217 137c-2-13 17-21 33-14l9 16c-6 14-25 18-37 11Z" fill="#ad7046" stroke="#75462f" stroke-width="2"/>
+          <path d="M225 134c6-1 15-5 25-3 M230 144l22-5" fill="none" stroke="#e7b87f" stroke-width="5"/>
+          <path d="M126 126c-20-5-12 17 0 19-3 15 24 18 26 3 21 3 17-17 5-22 10-16-13-24-21-13-11-10-22 5-10 13Z" fill="#6f8a51" stroke="#315340" stroke-width="2"/>
+          <path d="m140 147-3-25 M137 135l-10-6 M138 132l11-7" fill="none" stroke="#dbe0b7" stroke-width="2"/>
+          <path d="m247 94 93-63 M255 105l98-60" stroke="#78553b" stroke-width="7" stroke-linecap="round"/>
+          <path d="M166 70c-14-13 13-19 0-33 M196 67c-12-13 13-19 0-33" fill="none" stroke="#aab79d" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="321" cy="207" rx="43" ry="15" fill="#f6f2de" stroke="#315340" stroke-width="2"/>
+          <ellipse cx="321" cy="206" rx="32" ry="9" fill="#aec08e"/>
+          <path d="m302 205 13-5 12 5 11-3 M310 210l15-5 10 5" fill="none" stroke="#4c7248" stroke-width="3"/>
+        </svg>
+        <span class="art-caption">一餐一味 · 日常可爱</span>
+      </div>
+    </section>
+    <section class="meal-planner" aria-label="选择点餐日期和餐次">
+      <div class="planner-title"><span class="section-dot"></span><strong>这一餐</strong><span id="date-label"></span></div>
+      <div class="planner-controls"><label class="date-control"><span>日期</span><input id="order-date" type="date" min="2000-01-01" max="2100-12-31" aria-label="点餐日期" required></label><div class="meal-switch" role="group" aria-label="餐次"><button data-meal="lunch" aria-pressed="true">午餐</button><button data-meal="dinner" aria-pressed="false">晚餐</button></div><button class="text-button today-button" id="today-button">回到今天</button></div>
+    </section>
+    <div class="workspace">
+      <section class="menu-panel" aria-labelledby="menu-heading">
+        <div class="menu-heading-row"><div><span class="overline">TODAY’S MENU</span><h2 id="menu-heading" tabindex="-1">好菜都在这里 <span id="menu-count">20 道</span></h2></div><label class="search-box"><svg class="icon"><use href="#i-search"/></svg><input id="menu-search" type="search" placeholder="搜一道想吃的菜" aria-label="搜索菜品" maxlength="50"></label></div>
+        <div class="category-tabs" id="category-tabs" role="group" aria-label="按菜品分类筛选"></div>
+        <div class="menu-grid" id="menu-grid"></div>
+        <p class="menu-source">菜品与价格来自你提供的 2026.06.24 菜单。实际价格有变化时，可在「菜单设置」中调整。</p>
+      </section>
+      <aside class="order-panel" id="order-panel" aria-labelledby="order-heading" tabindex="-1">
+        <div class="order-top"><div><span class="overline">YOUR LITTLE TABLE</span><h2 id="order-heading">我的点单 <span id="basket-count">0</span></h2></div><button class="text-button muted" id="clear-button" disabled>清空</button></div>
+        <p class="order-context" id="order-context"></p>
+        <div class="order-lines" id="order-lines"></div>
+        <label class="note-label" for="order-note">口味与备注 <span>选填</span></label><textarea id="order-note" rows="2" maxlength="300" placeholder="比如少辣、打包，或注明具体小菜…"></textarea>
+        <div class="total-row"><div><span>本餐合计</span><small id="quantity-label">还没有选菜</small></div><strong><span>¥</span><span id="order-total">0</span></strong></div>
+        <button class="primary-button save-button" id="save-order" disabled><span>保存本次点单</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+        <p class="save-status" id="save-status">选好后保存，明天还能照着点。</p>
+        <p class="local-note"><span class="tiny-dot"></span>记录保存在此浏览器，可复制点单给店家。</p>
+      </aside>
+    </div>
+    <footer class="site-footer"><span>认真吃饭，是每天的小确幸。</span><span>周记 · 你的日常点菜小本</span></footer>
+  </main>
+  <button class="mobile-cart" id="mobile-cart"><span class="mobile-cart-icon"><svg class="icon"><use href="#i-bowl"/></svg><b id="mobile-count">0</b></span><span class="mobile-total">¥<strong id="mobile-total">0</strong></span><span class="mobile-cart-label">查看我的点单<svg class="icon"><use href="#i-arrow"/></svg></span></button>
+  <dialog id="receipt-dialog" aria-labelledby="receipt-title" class="receipt-dialog"><div class="dialog-heading"><div><span class="overline">MEAL NOTE</span><h2 id="receipt-title">这顿，安排好了</h2></div><button class="icon-button" data-close="receipt-dialog" aria-label="关闭点单详情"><svg class="icon"><use href="#i-close"/></svg></button></div><p class="dialog-description" id="receipt-status"></p><textarea id="receipt-text" class="receipt-text" readonly aria-label="可复制的点单内容"></textarea><div class="dialog-actions"><button class="secondary-button" id="download-order">下载点单</button><button class="primary-button" id="copy-order"><svg class="icon"><use href="#i-copy"/></svg>复制点单</button></div><p class="dialog-footnote">复制后可自行发给店家。此页面不会自动向店家下单。</p></dialog>
+  <dialog id="history-dialog" aria-labelledby="history-title" class="history-dialog"><div class="dialog-heading"><div><span class="overline">PAST MEALS</span><h2 id="history-title">吃过的，都记得</h2></div><button class="icon-button" data-close="history-dialog" aria-label="关闭点单记录"><svg class="icon"><use href="#i-close"/></svg></button></div><p class="dialog-description">每个日期、每个餐次保留一份点单，再次保存会更新该餐记录。</p><div id="history-list" class="history-list"></div><div class="backup-bar"><span>把点单小本带走</span><div><button class="text-button" id="export-backup">导出备份</button><button class="text-button" id="import-backup">导入备份</button><input type="file" id="backup-file" accept="application/json,.json" hidden></div></div></dialog>
+  <dialog id="settings-dialog" aria-labelledby="settings-title" class="settings-dialog"><form id="settings-form"><div class="dialog-heading"><div><span class="overline">MENU SETTINGS</span><h2 id="settings-title">让菜单跟上日常</h2></div><button type="button" class="icon-button" data-close="settings-dialog" aria-label="关闭菜单设置"><svg class="icon"><use href="#i-close"/></svg></button></div><p class="dialog-description">可修改菜名和单价，金额单位为元。保存过的点单保留当时价格。</p><div id="settings-fields" class="settings-fields"></div><div class="dialog-actions settings-actions"><button type="button" class="text-button" id="reset-menu">恢复截图菜单</button><button type="submit" class="primary-button">保存菜单</button></div></form></dialog>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title" class="confirm-dialog"><h2 id="confirm-title">确认操作</h2><p id="confirm-message"></p><div class="dialog-actions"><button class="secondary-button" id="confirm-cancel">取消</button><button class="primary-button" id="confirm-accept">确认</button></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><div class="storage-warning">请启用 JavaScript 后使用交互菜单。</div></noscript>
+  <script>/* MENU_DATA */</script>
+  <script>/* MENU_CORE */</script>
+  <script>/* APP_SCRIPT */</script>
+</body>
+</html>

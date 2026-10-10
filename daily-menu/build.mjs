@@ -1,0 +1,11 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+const root = path.dirname(fileURLToPath(import.meta.url));
+const read = name => readFile(path.join(root, 'src', name), 'utf8');
+const [template, styles, data, core, app] = await Promise.all(['template.html', 'styles.css', 'menu-data.js', 'core.js', 'app.js'].map(read));
+const safeScript = text => text.replace(/<\/script/gi, '<\\/script');
+const html = template.replace('/* APP_STYLES */', () => styles).replace('/* MENU_DATA */', () => safeScript(data)).replace('/* MENU_CORE */', () => safeScript(core)).replace('/* APP_SCRIPT */', () => safeScript(app));
+if (/\/\* (APP_STYLES|MENU_DATA|MENU_CORE|APP_SCRIPT) \*\//.test(html)) throw new Error('Unresolved build placeholder');
+await writeFile(path.join(root, 'index.html'), html);
+console.log(`Built daily-menu/index.html (${Buffer.byteLength(html).toLocaleString('en-US')} bytes, no external assets)`);
